@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Контакты — МореАнапа</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="img/amn.jpg" type="img/amn.jpg">
+</head>
+
+<body>
+  <header class="header">
+    <nav class="nav">
+      <a href="index.html" class="logo">
+        <svg viewBox="0 0 24 24">
+          <path d="M12 2L4 8v10l8 6 8-6V8l-8-6zm0 3l5 3.8v6.4L12 19l-5-3.8V8.8L12 5z" />
+        </svg>
+        МореАнапа
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Главная</a></li>
+        <li><a href="excursions.html">Экскурсии</a></li>
+        <li><a href="about.html">О нас</a></li>
+        <li><a href="contacts.html" class="active">Контакты</a></li>
+      </ul>
+      <div class="burger"><span></span><span></span><span></span></div>
+    </nav>
+  </header>
+  <div class="contacts-hero">
+    <h1>Свяжитесь с нами</h1>
+  </div>
+  <section class="section">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="icon">📞</div>
+          <div>
+            <h4>Телефон</h4>
+            <p>8 (989) 768-31-00 — звонок бесплатный</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon">📍</div>
+          <div>
+            <h4>Адрес</h4>
+            <p>г. Анапа, Набережная, 3</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon">🕐</div>
+          <div>
+            <h4>Режим работы</h4>
+            <p>Выходы - ежедневно</p>
+          </div>
+        </div>
+        <div class="contact-item">
+          <div class="icon">💬</div>
+          <div>
+            <h4>Мессенджеры</h4>
+            <p>Telegram: @yahtclubanapa</p>
+          </div>
+        </div>
+      </div>
+      <div class="contact-form">
+        <h3>Забронировать прогулку</h3>
+        <form id="contact-form">
+          <div class="form-group">
+            <label for="name">Ваше имя</label>
+            <input type="text" id="name" placeholder="Иван Иванов" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Телефон</label>
+            <input type="tel" id="phone" placeholder="+7 (900) 000-00-00" required>
+          </div>
+
+          <div class="form-group">
+            <label for="excursion">Экскурсия</label>
+            <select id="excursion">
+              <option>Морская рыбалка на теплоходе «ДЕМЕТРА» - 3000 ₽</option>
+              <option>Трёхпалубный катамаран «МЕТЕОР» - 2000 ₽</option>
+              <option>Яхта «КОРСАР» - 2500 ₽</option>
+              <option>Прогулка на яхте, катере - 1200 ₽</option>
+              <option>15-ти метровая яхта VIP - класса «ФЕСТИВАЛЬ» - 16000 ₽</option>
+              <option>15-ти метровая яхта VIP - класса «КАРНАВАЛ» - 14000 ₽</option>
+              <option>Моторная яхта «ГРАЦИЯ» - 12000 ₽</option>
+              <option>Моторная яхта «КИТТИВЕЙК» - 8000 ₽</option>
+              <option>Экскурсия «КИПАРИСОВОЕ ОЗЕРО» - 1200 ₽</option>
+              <option>Экскурсия «НОВОРОССИЙСК-КАБАРДИНКА-ГЕЛЕНДЖИК» - 2000 ₽</option>
+              <option>Тур на «КВАДРОЦИКЛАХ» - 6500 ₽</option>
+              <option>«КУЧУГУРЫ» - 1700 ₽</option>
+              <option>«РАСПИСАНИЕ НА ОКТЯБРЬ - АВТОБУСНЫЕ ТУРЫ» - 2500 ₽</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="date">Желаемая дата</label>
+            <input type="date" id="date">
+          </div>
+
+          <div class="form-group">
+            <label for="comment">Комментарий</label>
+            <textarea id="comment" placeholder="Количество человек, особые пожелания..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary" style="width:100%;font-size:1.1rem;">
+            Отправить заявку на WhatsApp
+          </button>
+
+          <a href="https://wa.me/79897683100?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%9C%D0%B5%D0%BD%D1%8F%20%D0%B8%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D1%8D%D0%BA%D1%81%D0%BA%D1%83%D1%80%D1%81%D0%B8%D1%8F"
+            target="_blank" rel="noopener noreferrer"></a>
+
+          <div class="form-msg" id="form-msg">✓ Заявка отправлена!</div>
+        </form>
+      </div>
+
+      <script>
+        document.getElementById("contact-form").addEventListener("submit", function (e) {
+          e.preventDefault(); // не перезагружаем страницу
+
+          const WHATSAPP_NUMBER = "79897683100"; // без плюса и пробелов
+
+          const name = document.getElementById("name").value.trim();
+          const phone = document.getElementById("phone").value.trim();
+          const excursion = document.getElementById("excursion").value;
+          const dateValue = document.getElementById("date").value;
+          const comment = document.getElementById("comment").value.trim();
+
+          // из 2025-10-24 делаем 24.10.2025
+          const date = dateValue ? dateValue.split("-").reverse().join(".") : "не указана";
+
+          const message =
+            "Здравствуйте! Хочу забронировать экскурсию.\n\n" +
+            "Имя: " + name + "\n" +
+            "Телефон: " + phone + "\n" +
+            "Экскурсия: " + excursion + "\n" +
+            "Желаемая дата: " + date + "\n" +
+            "Комментарий: " + (comment || "нет");
+
+          const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(message);
+
+          window.open(url, "_blank");
+
+          document.getElementById("form-msg").style.display = "block";
+          this.reset();
+        });
+      </script>
+      <div class="map-embed">
+        <iframe
+          src="https://yandex.ru/map-widget/v1/?mode=search&text=%D0%90%D0%BD%D0%B0%D0%BF%D0%B0%2C%20%D0%9D%D0%B0%D0%B1%D0%B5%D1%80%D0%B5%D0%B6%D0%BD%D0%B0%D1%8F%2C%203&z=16"
+          width="100%" height="400" frameborder="0" allowfullscreen loading="lazy"
+          title="Карта: г. Анапа, Набережная, 3">
+        </iframe>
+      </div>
+  </section>
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <h4>МореАнапа</h4>
+        <p>Морские прогулки и экскурсии в Анапе с 2014 года.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Навигация</h4><a href="index.html">Главная</a><a href="excursions.html">Экскурсии</a><a href="about.html">О
+          нас</a><a href="contacts.html">Контакты</a>
+      </div>
+      <div class="footer-col">
+        <h4>Контакты</h4>
+        <p>📞 8 (989) 768-31-00</p>
+        <p>📍 Анапа, Набережная, 3</p>
+      </div>
+      <div class="footer-col">
+        <h4>Режим</h4>
+        <p>Выходы - ежедневно</p>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 МореАнапа. Все права защищены.</div>
+  </footer>
+  <div class="modal-overlay" id="modal-overlay"></div>
+  <div class="lightbox" id="lightbox"></div>
+  <script src="script.js"></script>
+</body>
+
+</html>
